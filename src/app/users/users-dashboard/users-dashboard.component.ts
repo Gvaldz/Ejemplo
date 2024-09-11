@@ -9,16 +9,23 @@ import { IUser } from '../modelo/iuser';
 })
 export class UsersDashboardComponent {
 
-  users_list: IUser[] = []
+  users_list: IUser[] = [];
 
+  constructor(private _service: UserService) {
+    this.loadUsers();
+  }
 
-  constructor(private _service: UserService){
-
+  loadUsers(): void {
     this._service.getAll().subscribe(
       response => this.users_list = response
-    )
+    );
+  }
 
-   }
-
-
+  onUserAdded(newUser: IUser): void {
+    this._service.addUser(newUser).subscribe(
+      response => {       
+        this.users_list.push(response);
+      },
+    );
+  }
 }

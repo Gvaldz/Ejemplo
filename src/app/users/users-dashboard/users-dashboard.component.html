@@ -1,26 +1,27 @@
 <div id="box_dad">
-  <div id="table_users">
-      <table id="table">
-          <tr id="table_headers">            
-              <th>ID</th>
-              <th>NAME</th>
-              <th>USERNAME</th>
-              <th>PHONE</th>
-              <th>WEBSITE</th>
-          </tr>
-          <tr *ngFor="let user of users_list">
-              <td>{{user.id}}</td>
-              <td>{{user.name}}</td>
-              <td>{{user.username}}</td>
-              <td>{{user.phone}}</td>
-              <td>{{user.website}}</td>
-          </tr>
-      </table>
+    <div id="table_users">
+        <table id="table">
+            <tr id="table_headers">            
+                <th>ID</th>
+                <th>NAME</th>
+                <th>USERNAME</th>
+                <th>PHONE</th>
+                <th>WEBSITE</th>
+            </tr>
+            <tr *ngFor="let user of users_list">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.website}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <br>
+    
+    <h2>FORMULARIO DE USUARIOS</h2>
+    
+    <app-user-form (userAdded)="onUserAdded($event)"></app-user-form>
   </div>
   
-  <br>
-  
-  <h2>FORMULARIO DE USUARIOS</h2>
-  
-  <app-user-form></app-user-form>
-</div>

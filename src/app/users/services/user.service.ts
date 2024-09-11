@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUser } from '../modelo/iuser';
 
@@ -8,11 +8,16 @@ import { IUser } from '../modelo/iuser';
 })
 export class UserService {
 
-  url_base: string = "https://jsonplaceholder.typicode.com/users"
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users'; 
 
-  constructor(private _http: HttpClient) {  }
+  constructor(private http: HttpClient) {}
 
-  getAll(): Observable<IUser[]>{
-    return this._http.get<IUser[]>(this.url_base)
+  getAll(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(this.apiUrl);
+  }
+
+  addUser(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>(this.apiUrl, user);
   }
 }
+
